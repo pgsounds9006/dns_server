@@ -4,7 +4,7 @@ COPY src/WebApp/WebApp /app
 WORKDIR /app
 RUN dotnet publish -c Release -o /app/publish
 
-FROM nginx:alpine
+FROM nginx:latest
 WORKDIR /usr/share/nginx/html
 COPY --from=build /app/publish/wwwroot .
 EXPOSE 80

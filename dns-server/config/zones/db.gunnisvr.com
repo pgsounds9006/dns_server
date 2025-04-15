@@ -8,6 +8,5 @@ $TTL    604800
 ;
 @       IN      NS      ns.gunnisvr.com.
 @       IN      A       192.168.0.202
-@       IN      TXT     "ok"
 ns      IN      A       192.168.0.202
 www     IN      A       192.168.0.202
