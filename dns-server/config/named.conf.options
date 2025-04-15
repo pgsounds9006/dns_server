@@ -1,0 +1,13 @@
+options {
+    directory "/etc/bind";
+    
+    recursion no;
+    
+    dnssec-validation auto;
+    listen-on { any; };
+    listen-on-v6 { any; };
+    
+    allow-query { any; };
+    
+    version "DNS Server";
+};

@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  dns:
+    build: ./dns-server
+    container_name: bind9-dns
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    volumes:
+      - ./dns-server/config:/etc/bind
+    restart: unless-stopped
+    dns:
+      - 8.8.8.8
+
+  web:
+    build: ./web-server
+    container_name: nginx-web
+    ports:
+      - "80:80"
+    restart: unless-stopped

@@ -1,0 +1,4 @@
+zone "gunnisvr.com" {
+    type master;
+    file "/etc/bind/zones/db.gunnisvr.com";
+};
