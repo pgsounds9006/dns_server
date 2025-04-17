@@ -362,6 +362,8 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-# appsettings
-Server/appsettings.DevelopmentSecret.json
-Server/appsettings.ProductionSecret.json
+# Database container files
+db-server/data
+
+# Rider
+.idea/

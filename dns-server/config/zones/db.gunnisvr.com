@@ -7,6 +7,6 @@ $TTL    604800
                          604800 )       ; Negative Cache TTL
 ;
 @       IN      NS      ns.gunnisvr.com.
-@       IN      A       192.168.0.202
-ns      IN      A       192.168.0.202
-www     IN      A       192.168.0.202
+@       IN      A       172.30.89.41
+ns      IN      A       172.30.89.41
+www     IN      A       172.30.89.41

@@ -1,21 +1,38 @@
 version: "3"
 
 services:
-  dns:
-    build: ./dns-server
-    container_name: bind9-dns
-    ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-    volumes:
-      - ./dns-server/config:/etc/bind
-    restart: unless-stopped
     dns:
-      - 8.8.8.8
+        build: ./dns-server
+        container_name: dns-server
+        ports:
+            - "53:53/tcp"
+            - "53:53/udp"
+        volumes:
+            - ./dns-server/config:/etc/bind
+        restart: unless-stopped
+        dns:
+            - 8.8.8.8
 
-  web:
-    build: ./web-server
-    container_name: nginx-web
-    ports:
-      - "80:80"
-    restart: unless-stopped
+    web:
+        build: ./web-server
+        container_name: web-server
+        ports:
+            - "80:8080"
+        depends_on:
+            - db
+        restart: unless-stopped
+
+    db:
+        build: ./db-server
+        container_name: db-server
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: pguser
+            POSTGRES_PASSWORD: passssword
+            POSTGRES_DB: pgdb
+            POSTGRES_HOST_AUTH_METHOD: scram-sha-256
+            POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
+        volumes:
+            - ./db-server/data:/var/lib/postgresql/data
+        restart: always
